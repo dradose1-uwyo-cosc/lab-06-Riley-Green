@@ -1,9 +1,9 @@
-# Your Name Here
+# Riley Green
 # UWYO COSC 1010
-# Submission Date
+# Submission Date: 10/17/24
 # Lab 06
-# Lab Section: 
-# Sources, people worked with, help given to: 
+# Lab Section: 13
+# Sources, people worked with, help given to: Nolan Hottell
 # your
 # comments
 # here
@@ -71,6 +71,16 @@ print(len(random_string)) # Print out the size for reference
 # Output which letter occurred the least 
 # Output what the percentage of the string each character is, again in alphabetical
 
+letter_count = {}
+for letter in random_string:
+    if letter in letter_count:
+        letter_count[letter] += 1
+    else:
+        letter_count[letter] = 1
+for letter in sorted(letter_count):
+    print(f"{letter}: {letter_count[letter]}")
+
+
 #Tips and trick:
 # You can iterate through strings like you would a list
 # All characters are lowercase 
@@ -88,8 +98,8 @@ print(len(random_string)) # Print out the size for reference
 print("*"*75)
 # Output which letter occurred the most 
 
-most_occurred = ""
-least_occurred = ""
+most_occurred = max(letter_count, key=letter_count.get)
+least_occurred = min(letter_count, key=letter_count.get)
 
 print(f"The letter that occurred the most is {most_occurred}")
 print("*"*75)
@@ -98,3 +108,8 @@ print(f"The letter that occurred the most is {least_occurred}")
 print("*"*75)
 
 # Output what the percentage of the string each character is, again in alphabetical
+
+total_characters = len(random_string)
+for letter in sorted(letter_count):
+    percentage = (letter_count[letter] / total_characters) * 100
+    print(f"{letter}:{percentage}%")
